@@ -1,0 +1,86 @@
+<html>
+
+<head>
+  <title>Aria2c Client</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <link rel="icon" href="favicon.ico" />
+  <script src="libs/axios.min.js"></script>
+  <link rel="stylesheet" href="libs/bootstrap.min.css" />
+  <script src="libs/bootstrap.min.js"></script>
+  <style>
+    .yellow {
+      color: #c4c402;
+    }
+
+    .yellowish {
+      color: #707000;
+    }
+
+    .red {
+      color: #df0000;
+    }
+
+    .reddish {
+      color: #660000;
+    }
+
+    .icon.icon-fw {
+      width: 1.28571429em;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+  <script src="interface.js" defer></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div id="statusField"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4>Stats</h4>
+        <div id="stats_speed"></div>
+        <div class="btn-group" role="group" id="stats_speed_btn">
+          <button class="btn btn-success" onclick="setMaxOverallDownloadLimit('0')">
+            Unlimited
+          </button>
+        </div>
+        <div id="stats_downloads"></div>
+        <button class="btn btn-primary" onclick="setMaxConcurrentDownloadsByDirection('UP')">
+          UP
+        </button>
+        <button class="btn btn-secondary" onclick="setMaxConcurrentDownloadsByDirection('DOWN')">
+          DOWN
+        </button>
+        <div class="btn-group" role="group" id="currentDownloads"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4>Current downloads:</h4>
+        <div id="results"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4 class="yellow">Waiting downloads:</h4>
+        <div id="resultsWaiting" class="yellowish"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4 class="red">Failed downloads:</h4>
+        <div id="resultsFailed" class="reddish"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

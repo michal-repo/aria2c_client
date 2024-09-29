@@ -1,0 +1,28 @@
+{
+    "speed_limits_in_mb": [
+        {
+            "value": 2,
+            "bootstrap_css": "danger"
+        },
+        {
+            "value": 20,
+            "bootstrap_css": "warning"
+        },
+        {
+            "value": 50,
+            "bootstrap_css": "primary"
+        },
+        {
+            "value": 100,
+            "bootstrap_css": "primary"
+        }
+    ],
+    "current_downloads": [
+        1,
+        2,
+        5,
+        10,
+        15,
+        20
+    ]
+}
