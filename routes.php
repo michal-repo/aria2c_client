@@ -7,14 +7,12 @@ require_once 'config.php';
 
 use Aria2API\A2 as A2;
 
-class Route
-{
+class Route {
     public $method;
     public $path;
     public $fun;
 
-    public function __construct($method, $path, $fun)
-    {
+    public function __construct($method, $path, $fun) {
         $this->method = $method;
         $this->path = $path;
         $this->fun = $fun;
@@ -80,6 +78,10 @@ $routes = [
         } else {
             echo $GLOBALS['api']->changeGlobalOption("max-overall-download-limit", strval($j['value']));
         }
+    }),
+    new Route('post', '/purge-download-results', function () {
+        header('Content-Type: application/json');
+        echo $GLOBALS['api']->purgeDownloadResult();
     }),
 
 ];

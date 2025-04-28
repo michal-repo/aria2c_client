@@ -55,6 +55,13 @@ class A2
         return json_encode($list);
     }
 
+    public function purgeDownloadResult()
+    {
+        $result = $this->aria2->purgeDownloadResult();
+
+        return json_encode($result);
+    }
+
     public function serviceStatus()
     {
         $status = "Inactive";

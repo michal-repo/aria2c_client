@@ -49,7 +49,6 @@ function setup() {
       });
       btn_css = "light";
       response.data.current_downloads.forEach((value) => {
-        console.log(value);
         const btn = document.createElement("button");
         btn.classList.add("btn", "btn-" + btn_css);
         btn_css = (btn_css == "light" ? "dark" : "light");
@@ -116,7 +115,7 @@ function getGlobStats() {
       }
     });
   }
-  getGlobStatusTimeout = setTimeout(getGlobStats, 1000);
+  getGlobStatusTimeout = setTimeout(getGlobStats, 2000);
 }
 
 function getActive() {
@@ -131,10 +130,11 @@ function getActive() {
       } else {
         r.innerText = "List is empty";
       }
+      let counter = 1;
       response.data.result.forEach((element) => {
         let e = document.createElement("span");
         let br = document.createElement("br");
-        e.innerText = element.dir + getFileName(element.files[0].path) + " / ";
+        e.innerText =  counter++ + ". " + element.dir + getFileName(element.files[0].path) + " / ";
         if (element.totalLength > 0) {
           e.innerText +=
             fmtsize(element.completedLength) +
@@ -168,7 +168,7 @@ function getActive() {
     });
     getWaiting();
   }
-  getActiveTimeout = setTimeout(getActive, 1000);
+  getActiveTimeout = setTimeout(getActive, 2000);
 }
 
 function getWaiting() {
@@ -231,7 +231,7 @@ function getFailed() {
       }
     });
   }
-  getFailedTimeout = setTimeout(getFailed, 60000);
+  getFailedTimeout = setTimeout(getFailed, 5000);
 }
 
 function setMaxConcurrentDownloads(max_concurrent_downloads_value) {
@@ -260,6 +260,11 @@ function setMaxOverallDownloadLimit(speed) {
   axios.post("max-overall-download-limit", {
     value: speed,
   });
+}
+
+function purgeDownloadResults() {
+  axios.post("purge-download-results");
+  let getFailedTim = setTimeout(getFailed, 2000);
 }
 
 function getErrorCode(errorCode) {
